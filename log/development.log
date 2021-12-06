@@ -1,0 +1,965 @@
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFriendNum (20211203104933)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "friend_nums" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "num" integer, "str_out" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211203104933"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-12-03 10:51:17.989401"], ["updated_at", "2021-12-03 10:51:17.989401"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-12-03 13:53:02 +0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2343)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/hoangphuong/Documents/IU6-33B Web/lab11_new/my_app/public/packs
+[Webpacker] Hash: e2a8a876c5815bee1e21
+Version: webpack 4.46.0
+Time: 1623ms
+Built at: 12/03/2021 1:53:05 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-e421b4aa3f716bebdab1.js    125 KiB  application  [emitted] [immutable]  application
+js/application-e421b4aa3f716bebdab1.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-e421b4aa3f716bebdab1.js js/application-e421b4aa3f716bebdab1.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 3147.3ms | Allocations: 16867)
+Completed 200 OK in 3164ms (Views: 3152.2ms | ActiveRecord: 0.0ms | Allocations: 23624)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 13:53:09 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"3000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 3000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.4ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 3000], ["str_out", " 220 and 284; 1184 and 1210; 2620 and 2924"], ["created_at", "2021-12-03 10:53:10.299396"], ["updated_at", "2021-12-03 10:53:10.299396"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (18.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 3000) /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 8.6ms | Allocations: 4858)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 4927)
+Completed 500 Internal Server Error in 559ms (ActiveRecord: 20.1ms | Allocations: 21422)
+
+
+  
+ActionView::Template::Error (undefined method `num' for #<ActiveRecord::Relation [#<FriendNum id: 1, num: 3000, str_out: " 220 and 284; 1184 and 1210; 2620 and 2924", created_at: "2021-12-03 10:53:10.299396000 +0000", updated_at: "2021-12-03 10:53:10.299396000 +0000">]>
+Did you mean?  sum):
+    15:             <th>Friend Number</th>
+    16:         </tr>
+    17:         <tr>
+    18:             <td><%= @res.num %> </td>
+    19:             <td><%= @res.str_out %> </td>
+    20:         </tr>
+    21:     </table>
+  
+app/views/friend_num/result.html.erb:18
+Started GET "/" for 127.0.0.1 at 2021-12-03 13:56:00 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1375)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 4533)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 5737)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 13:56:03 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"3000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 3000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 3000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 2.9ms | Allocations: 867)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 3916)
+Completed 200 OK in 13ms (Views: 9.5ms | ActiveRecord: 0.3ms | Allocations: 5179)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 13:56:13 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4075)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 4520)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 13:56:17 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"2000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 2000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.3ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 2000], ["str_out", " 220 and 284; 1184 and 1210"], ["created_at", "2021-12-03 10:56:17.803909"], ["updated_at", "2021-12-03 10:56:17.803909"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 2000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 1.6ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3749)
+Completed 200 OK in 229ms (Views: 6.1ms | ActiveRecord: 5.9ms | Allocations: 13120)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 13:56:20 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 4073)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 4514)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 13:56:23 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"5000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 5000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.2ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 5000], ["str_out", " 220 and 284; 1184 and 1210; 2620 and 2924"], ["created_at", "2021-12-03 10:56:24.855548"], ["updated_at", "2021-12-03 10:56:24.855548"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 5000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 1.9ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3751)
+Completed 200 OK in 1384ms (Views: 6.3ms | ActiveRecord: 6.1ms | Allocations: 19150)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 13:57:08 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 4080)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 4522)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 13:57:17 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"3000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 3000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 3000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 2.5ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 3748)
+Completed 200 OK in 12ms (Views: 8.5ms | ActiveRecord: 0.5ms | Allocations: 4863)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 17:30:23 +0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 30.7ms | Allocations: 2058)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.9ms | Allocations: 7526)
+Completed 200 OK in 67ms (Views: 60.8ms | ActiveRecord: 0.0ms | Allocations: 10589)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 17:30:28 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"3000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 3000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 3000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 11.2ms | Allocations: 3547)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 6598)
+Completed 200 OK in 35ms (Views: 17.2ms | ActiveRecord: 2.1ms | Allocations: 9555)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 17:30:31 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 4077)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 4523)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 17:30:35 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"3000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 3000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.4ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 3000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 2.9ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3748)
+Completed 200 OK in 17ms (Views: 10.4ms | ActiveRecord: 0.8ms | Allocations: 4866)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 17:30:53 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 4076)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.0ms | Allocations: 4522)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 17:30:57 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"6000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 6000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (1.7ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 6000], ["str_out", " 220 and 284; 1184 and 1210; 2620 and 2924; 5020 and 5564"], ["created_at", "2021-12-03 14:30:59.938435"], ["updated_at", "2021-12-03 14:30:59.938435"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.1ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 6000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 1.7ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3751)
+Completed 200 OK in 2010ms (Views: 6.1ms | ActiveRecord: 6.3ms | Allocations: 21814)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 17:31:10 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.7ms | Allocations: 4073)
+Completed 200 OK in 21ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 4514)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 17:31:15 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"6000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 6000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.4ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 6000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 4.2ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 3748)
+Completed 200 OK in 17ms (Views: 11.4ms | ActiveRecord: 0.7ms | Allocations: 4874)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:12:50 +0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FriendNumController#database as HTML
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 0.6ms | Allocations: 339)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 5961)
+Completed 200 OK in 70ms (Views: 9.9ms | ActiveRecord: 0.7ms | Allocations: 16225)
+
+
+Started GET "/result" for 127.0.0.1 at 2021-12-03 18:13:06 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/result"):
+  
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:13:11 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 11.0ms | Allocations: 3319)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 6243)
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 0.0ms | Allocations: 6821)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 18:13:16 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"3000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 3000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 3000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 4.4ms | Allocations: 888)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 3938)
+Completed 200 OK in 20ms (Views: 13.0ms | ActiveRecord: 0.6ms | Allocations: 5822)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:13:18 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 4074)
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 4517)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 18:13:21 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"6000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 6000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 6000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 4.0ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 3751)
+Completed 200 OK in 19ms (Views: 11.2ms | ActiveRecord: 0.8ms | Allocations: 4885)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:13:23 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 4073)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 4514)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 18:13:28 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"1600", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 1600], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.3ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 1600], ["str_out", " 220 and 284; 1184 and 1210"], ["created_at", "2021-12-03 15:13:28.664403"], ["updated_at", "2021-12-03 15:13:28.664403"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 1600)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 1.9ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3748)
+Completed 200 OK in 194ms (Views: 6.3ms | ActiveRecord: 6.1ms | Allocations: 12987)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:13:30 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 4073)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 4514)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 18:13:33 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"2300", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 2300], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.2ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 2300], ["str_out", " 220 and 284; 1184 and 1210"], ["created_at", "2021-12-03 15:13:34.098452"], ["updated_at", "2021-12-03 15:13:34.098452"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 2300)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 2.0ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 3748)
+Completed 200 OK in 341ms (Views: 7.6ms | ActiveRecord: 4.9ms | Allocations: 13732)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:13:36 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 4079)
+Completed 200 OK in 21ms (Views: 18.9ms | ActiveRecord: 0.0ms | Allocations: 4522)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:13:41 +0300
+Processing by FriendNumController#database as HTML
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 0.2ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 3075)
+Completed 200 OK in 17ms (Views: 9.7ms | ActiveRecord: 0.3ms | Allocations: 4673)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:14:11 +0300
+Processing by FriendNumController#database as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 0.2ms | Allocations: 46)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3125)
+Completed 200 OK in 9ms (Views: 7.0ms | Allocations: 4287)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:16:40 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1176)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 4156)
+Completed 200 OK in 9ms (Views: 7.9ms | Allocations: 4779)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:16:49 +0300
+Processing by FriendNumController#database as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 2.1ms | Allocations: 575)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 3609)
+Completed 200 OK in 28ms (Views: 10.9ms | ActiveRecord: 1.7ms | Allocations: 8220)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:17:02 +0300
+Processing by FriendNumController#database as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 0.2ms | Allocations: 43)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 3143)
+Completed 200 OK in 17ms (Views: 5.6ms | ActiveRecord: 1.2ms | Allocations: 8453)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:18:51 +0300
+Processing by FriendNumController#database as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  [1m[36mFriendNum Load (0.1ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 1.0ms | Allocations: 518)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 3602)
+Completed 200 OK in 15ms (Views: 5.8ms | ActiveRecord: 0.9ms | Allocations: 8937)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:19:03 +0300
+Processing by FriendNumController#database as HTML
+  [1m[36mFriendNum Load (0.4ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 2.5ms | Allocations: 506)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 3540)
+Completed 200 OK in 20ms (Views: 13.7ms | ActiveRecord: 0.4ms | Allocations: 5069)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:19:42 +0300
+Processing by FriendNumController#database as HTML
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 2.0ms | Allocations: 632)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 3903)
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 0.3ms | Allocations: 6194)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:24:15 +0300
+Processing by FriendNumController#database as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friend_num_controller.rb:41:in `database'
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/controllers/friend_num_controller.rb:41:in `database'
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 1.0ms | Allocations: 5352)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:25:35 +0300
+Processing by FriendNumController#database as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friend_num_controller.rb:41:in `puts'
+  [1m[36mFriendNum Load (0.1ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/controllers/friend_num_controller.rb:41:in `puts'
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 1.0ms | Allocations: 5218)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:26:06 +0300
+Processing by FriendNumController#database as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  [1m[36mFriendNum Load (0.1ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 1.0ms | Allocations: 4990)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:27:42 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1376)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 4527)
+Completed 200 OK in 20ms (Views: 15.9ms | ActiveRecord: 0.0ms | Allocations: 5733)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 18:27:47 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"2343", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 2343], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.2ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 2343], ["str_out", " 220 and 284; 1184 and 1210"], ["created_at", "2021-12-03 15:27:47.460312"], ["updated_at", "2021-12-03 15:27:47.460312"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 2343)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 2.3ms | Allocations: 876)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 3928)
+Completed 200 OK in 344ms (Views: 7.2ms | ActiveRecord: 6.4ms | Allocations: 14409)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:27:49 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 4074)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 4515)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 18:27:52 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"432", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 432], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.4ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 432], ["str_out", " 220 and 284"], ["created_at", "2021-12-03 15:27:52.345691"], ["updated_at", "2021-12-03 15:27:52.345691"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 432)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 2.1ms | Allocations: 700)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 3747)
+Completed 200 OK in 56ms (Views: 7.8ms | ActiveRecord: 6.3ms | Allocations: 9974)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-03 18:27:54 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 4073)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 4514)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-03 18:27:57 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"6500", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 6500], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.3ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 6500], ["str_out", " 220 and 284; 1184 and 1210; 2620 and 2924; 5020 and 5564; 6232 and 6368"], ["created_at", "2021-12-03 15:28:00.224289"], ["updated_at", "2021-12-03 15:28:00.224289"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 6500)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 1.7ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3748)
+Completed 200 OK in 2256ms (Views: 6.4ms | ActiveRecord: 6.0ms | Allocations: 22126)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:28:06 +0300
+Processing by FriendNumController#database as HTML
+  [1m[36mFriendNum Load (0.6ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+Completed 200 OK in 9ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 1618)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:34:41 +0300
+Processing by FriendNumController#database as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1616)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1685)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.5ms | Allocations: 6707)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     6:             <th>Time 1</th>
+     7:             <th>Time 2</th>
+     8:         </tr>
+     9:         <% @res.each do |x|%>
+    10:         <tr>
+    11:             <td><%= x.num %></td>
+    12:             <td><%= x.str_out %></td>
+  
+app/views/friend_num/database.html.erb:9
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:34:52 +0300
+Processing by FriendNumController#database as HTML
+  [1m[36mFriendNum Load (0.4ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 9.2ms | Allocations: 4496)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 4565)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.4ms | Allocations: 6321)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `at' for #<ActionView::Base:0x0000000000fb40>):
+    11:             <td><%= x.num %></td>
+    12:             <td><%= x.str_out %></td>
+    13:             <td><%= x.created_at %></td>
+    14:             <td><%= x.updated at %></td>
+    15:         </tr>
+    16:         <% end %>
+    17:     </table>
+  
+app/views/friend_num/database.html.erb:14
+app/views/friend_num/database.html.erb:9:in `each'
+app/views/friend_num/database.html.erb:9
+Started GET "/database" for 127.0.0.1 at 2021-12-03 18:35:01 +0300
+Processing by FriendNumController#database as HTML
+  [1m[36mFriendNum Load (0.5ms)[0m  [1m[34mselect * from friend_nums[0m
+  ↳ app/controllers/friend_num_controller.rb:40:in `database'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 2.7ms | Allocations: 676)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3952)
+Completed 200 OK in 21ms (Views: 15.2ms | ActiveRecord: 0.5ms | Allocations: 5742)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-06 00:28:34 +0300
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 31.2ms | Allocations: 2027)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 90.3ms | Allocations: 7493)
+Completed 200 OK in 107ms (Views: 95.3ms | ActiveRecord: 0.0ms | Allocations: 10654)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-06 00:28:50 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"301", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 301], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.8ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 301], ["str_out", " 220 and 284"], ["created_at", "2021-12-05 21:28:50.770189"], ["updated_at", "2021-12-05 21:28:50.770189"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 301)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 5.1ms | Allocations: 941)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 3995)
+Completed 200 OK in 78ms (Views: 16.1ms | ActiveRecord: 9.1ms | Allocations: 15023)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-06 00:29:00 +0300
+Processing by FriendNumController#database as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 18.4ms | Allocations: 3577)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 3646)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 4215)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    16:             <th>Time 1</th>
+    17:             <th>Time 2</th>
+    18:         </tr>
+    19:         <% @db.each do |x|%>
+    20:         <tr>
+    21:             <td><%= x.num %></td>
+    22:             <td><%= x.str_out %></td>
+  
+app/views/friend_num/database.html.erb:19
+Started GET "/database" for 127.0.0.1 at 2021-12-06 00:29:32 +0300
+Processing by FriendNumController#database as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/friend_num/database.html.erb:19
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/views/friend_num/database.html.erb:19
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 18.3ms | Allocations: 4612)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.5ms | Allocations: 7698)
+Completed 200 OK in 36ms (Views: 28.6ms | ActiveRecord: 1.9ms | Allocations: 8871)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-06 00:42:37 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2027)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 7492)
+Completed 200 OK in 19ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 10653)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-06 00:42:43 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"501", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 501], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.3ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 501], ["str_out", " 220 and 284"], ["created_at", "2021-12-05 21:42:43.080688"], ["updated_at", "2021-12-05 21:42:43.080688"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 501)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 13.2ms | Allocations: 938)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.1ms | Allocations: 3988)
+Completed 200 OK in 113ms (Views: 47.5ms | ActiveRecord: 6.5ms | Allocations: 15417)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-06 00:42:45 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 4078)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 4524)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-06 00:42:49 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"501", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 501], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.4ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 501)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 4.1ms | Allocations: 700)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 3750)
+Completed 200 OK in 22ms (Views: 13.7ms | ActiveRecord: 0.9ms | Allocations: 4884)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-06 00:42:55 +0300
+Processing by FriendNumController#database as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.3ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/views/friend_num/database.html.erb:19
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1578)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 4615)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.3ms | Allocations: 5223)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-06 00:54:22 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 22.5ms | Allocations: 2027)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.4ms | Allocations: 7493)
+Completed 200 OK in 62ms (Views: 56.3ms | ActiveRecord: 0.0ms | Allocations: 10654)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-06 00:54:50 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"4000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 4000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mFriendNum Create (0.3ms)[0m  [1m[32mINSERT INTO "friend_nums" ("num", "str_out", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", 4000], ["str_out", " 220 and 284; 1184 and 1210; 2620 and 2924"], ["created_at", "2021-12-05 21:54:51.607487"], ["updated_at", "2021-12-05 21:54:51.607487"]]
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friend_num_controller.rb:34:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 4000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 2.9ms | Allocations: 942)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 3916)
+Completed 200 OK in 883ms (Views: 7.1ms | ActiveRecord: 7.3ms | Allocations: 23969)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-06 00:54:54 +0300
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 4077)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 4523)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-06 00:54:58 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"4000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 4000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.4ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 4000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 4.3ms | Allocations: 701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 3748)
+Completed 200 OK in 25ms (Views: 14.6ms | ActiveRecord: 1.1ms | Allocations: 4866)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-06 00:55:05 +0300
+Processing by FriendNumController#database as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.5ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/views/friend_num/database.html.erb:19
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 8.9ms | Allocations: 1623)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 4659)
+Completed 200 OK in 22ms (Views: 18.5ms | ActiveRecord: 0.5ms | Allocations: 5251)
+
+
+Started GET "/" for 127.0.0.1 at 2021-12-06 17:04:39 +0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FriendNumController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/home.html.erb within layouts/application
+  Rendered friend_num/home.html.erb within layouts/application (Duration: 29.7ms | Allocations: 2059)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 65.0ms | Allocations: 7528)
+Completed 200 OK in 83ms (Views: 76.3ms | ActiveRecord: 0.0ms | Allocations: 10591)
+
+
+Started POST "/result" for 127.0.0.1 at 2021-12-06 17:04:57 +0300
+Processing by FriendNumController#result as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "num"=>"3000", "commit"=>"Get result"}
+  [1m[36mFriendNum Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friend_nums" WHERE "friend_nums"."num" = ? LIMIT ?[0m  [["num", 3000], ["LIMIT", 1]]
+  ↳ app/controllers/friend_num_controller.rb:31:in `result'
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/result.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.2ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums" WHERE (num = 3000)[0m
+  ↳ app/views/friend_num/result.html.erb:17
+  Rendered friend_num/result.html.erb within layouts/application (Duration: 7.3ms | Allocations: 3547)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 6597)
+Completed 200 OK in 21ms (Views: 13.2ms | ActiveRecord: 1.2ms | Allocations: 9529)
+
+
+Started GET "/database" for 127.0.0.1 at 2021-12-06 17:05:12 +0300
+Processing by FriendNumController#database as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friend_num/database.html.erb within layouts/application
+  [1m[36mFriendNum Load (0.4ms)[0m  [1m[34mSELECT "friend_nums".* FROM "friend_nums"[0m
+  ↳ app/views/friend_num/database.html.erb:19
+  Rendered friend_num/database.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1683)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 4717)
+Completed 200 OK in 16ms (Views: 11.7ms | ActiveRecord: 0.4ms | Allocations: 5297)
+
+
